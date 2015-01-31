@@ -73,6 +73,26 @@ count(); // 4
   After the function has been called N number of times, console.log('STAHHP');
 */
 
+//heres the way to get it to work
+var fn = function(cb, n) {
+  return cb(n);
+}
+
+var callbackfn = function(n) {
+  return function() {
+    n--;
+    if (n >= 1) {
+      console.log('weeeee');
+    } else {
+      console.log('STAHHP');
+    }
+  }
+}
+
+var inner = fn(callbackfn, 3);
+inner();
+
+/*this was my attempt
 var fun2 = function() {
   console.log("Whats up?");
 }
@@ -91,3 +111,4 @@ var fun1 = function(somefun, nNum) {
 
 var call = fun1(fun2, 3);
 call();
+*/
